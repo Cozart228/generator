@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "generatorFont";
+    src: url(/font/DXS\ Yagi\ Bold_0.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "gen2";
+    src: url(/font/Bounded-Black.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cloudy";
+    src: url(/font/CLOUDY\ FONT.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

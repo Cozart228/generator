@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        @import url(/font/font.css);
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "generatorFont", sans-serif;
+            box-sizing: border-box;
+            background-color: rgb(48, 48, 48);
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(81, 87, 252);
+        }
+
+        #registerForm {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        label {
+            color: #fff;
+            font-size: 40px;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            background-color: #000000;
+            padding: 20px;
+            border-radius: 50px;
+            color: #fff;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            color: #fff;
+            padding: 20px;
+            border-radius: 50px;
+            background-color: #000000;
+            font-size: 25px;
+            cursor: pointer;
+            transition: .5s all;
+        }
+
+        button:hover {
+            box-shadow: 10px 5px rgba(255, 255, 255, 1);
+            color: brown;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>THUGOV REGISTER</h1>
+    <form id="registerForm">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required placeholder="Ввод:">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required placeholder="Ввод:">
+        <br>
+        <button type="submit">Register</button>
+        <p id="message"></p>
+    </form>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+            
+            const result = await response.json();
+            document.getElementById('message').textContent = result.message;
+
+            if (response.ok) {
+                window.location.href = '/login';
+            };
+        })
+    </script>
+</body>
+</html>
